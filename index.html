@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyFly Airlines | Flight Reservation System</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Segoe UI, sans-serif;
+  background:#020617;
+  color:white;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:#0f172a;
+  border-bottom:1px solid #1e293b;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  color:#38bdf8;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  color:#cbd5e1;
+}
+
+/* HERO */
+.hero{
+  padding:80px 20px;
+  text-align:center;
+  background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero h1{
+  font-size:48px;
+  color:#38bdf8;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  color:#e2e8f0;
+}
+
+.hero h3{
+  margin-top:20px;
+  color:#94a3b8;
+}
+
+/* SEARCH */
+.search-box{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+
+.search-box input{
+  padding:12px;
+  width:220px;
+  border:none;
+  border-radius:8px;
+}
+
+.search-box button{
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  background:#38bdf8;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* AIRLINES */
+.airlines{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+  padding:30px;
+}
+
+.airlines img{
+  width:120px;
+  height:60px;
+  background:white;
+  padding:10px;
+  border-radius:10px;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:20px;
+}
+
+.card-btn{
+  background:#1e293b;
+  border:1px solid #38bdf8;
+  padding:14px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-btn:hover{
+  background:#38bdf8;
+  color:black;
+  transform:scale(1.05);
+}
+
+/* DESTINATIONS */
+.section-title{
+  text-align:center;
+  margin-top:40px;
+  color:#38bdf8;
+}
+
+.destinations{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:30px;
+}
+
+.card{
+  width:260px;
+  background:#1e293b;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+
+.card p{
+  padding:15px;
+  text-align:center;
+}
+
+/* TABLE */
+table{
+  width:85%;
+  margin:auto;
+  border-collapse:collapse;
+  margin-top:30px;
+  margin-bottom:60px;
+}
+
+th{
+  background:#1e293b;
+  color:#38bdf8;
+}
+
+td{
+  background:#020617;
+}
+
+td,th{
+  border:1px solid #334155;
+  padding:12px;
+  text-align:center;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#64748b;
+  border-top:1px solid #1e293b;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">✈ SkyFly Airlines</div>
+  <div class="nav-links">
+    <span>Home</span>
+    <span>Flights</span>
+    <span>Dashboard</span>
+    <span>Contact</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Flight Reservation System</h1>
+  <p>Search Flights • Manage Bookings • View Revenue</p>
+  <h3>Created by Utsah Singhal</h3>
+
+  <div class="search-box">
+    <input type="text" id="source" placeholder="From (Delhi)">
+    <input type="text" id="destination" placeholder="To (Mumbai)">
+    <button onclick="searchFlights()">Search Flights</button>
+  </div>
+</div>
+
+<!-- BUTTONS -->
+<div class="buttons">
+  <div class="card-btn" onclick="loadFlights()">Flights</div>
+  <div class="card-btn" onclick="loadWaiting()">Waiting</div>
+  <div class="card-btn" onclick="loadSeats()">Seats</div>
+  <div class="card-btn" onclick="loadBookings()">Bookings</div>
+  <div class="card-btn" onclick="loadRevenue()">Revenue</div>
+  <div class="card-btn" onclick="loadPending()">Pending</div>
+</div>
+
+<!-- POPULAR ROUTES -->
+<h2 class="section-title">Popular Routes</h2>
+
+<div class="destinations">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80">
+<p>Delhi → Mumbai</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80">
+<p>Mumbai → Bangalore</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80">
+<p>Delhi → Kolkata</p>
+</div>
+
+</div>
+
+<!-- TABLE -->
+<table id="table"></table>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 SkyFly Airlines | DBMS Mini Project
+</div>
+
+<script>
+
+/* SEARCH */
+function searchFlights(){
+const source=document.getElementById("source").value;
+const destination=document.getElementById("destination").value;
+
+fetch(`http://localhost:3000/search?source=${source}&destination=${destination}`)
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>ID</th><th>Airline</th><th>From</th><th>To</th></tr>";
+
+if(data.length===0){
+html+="<tr><td colspan='4'>No Flights Found</td></tr>";
+}else{
+data.forEach(row=>{
+html+=`<tr>
+<td>${row.flight_id}</td>
+<td>${row.airline}</td>
+<td>${row.source}</td>
+<td>${row.destination}</td>
+</tr>`;
+});
+}
+
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* FLIGHTS */
+function loadFlights(){
+fetch("http://localhost:3000/flights")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>ID</th><th>Airline</th><th>From</th><th>To</th></tr>";
+data.forEach(row=>{
+html+=`<tr>
+<td>${row.flight_id}</td>
+<td>${row.airline}</td>
+<td>${row.source}</td>
+<td>${row.destination}</td>
+</tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* WAITING */
+function loadWaiting(){
+fetch("http://localhost:3000/waiting")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>Name</th><th>Flight</th></tr>";
+data.forEach(row=>{
+html+=`<tr><td>${row.name}</td><td>${row.flight_id}</td></tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* SEATS */
+function loadSeats(){
+fetch("http://localhost:3000/seats")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>Flight</th><th>Available Seats</th></tr>";
+data.forEach(row=>{
+html+=`<tr><td>${row.flight_id}</td><td>${row.available_seats}</td></tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* BOOKINGS */
+function loadBookings(){
+fetch("http://localhost:3000/bookings")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>ID</th><th>Name</th><th>Airline</th><th>Status</th></tr>";
+data.forEach(row=>{
+html+=`<tr>
+<td>${row.booking_id}</td>
+<td>${row.name}</td>
+<td>${row.airline}</td>
+<td>${row.status}</td>
+</tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* REVENUE */
+function loadRevenue(){
+fetch("http://localhost:3000/revenue")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>Flight</th><th>Revenue</th></tr>";
+data.forEach(row=>{
+html+=`<tr><td>${row.flight_id}</td><td>${row.revenue}</td></tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+/* PENDING */
+function loadPending(){
+fetch("http://localhost:3000/pending")
+.then(res=>res.json())
+.then(data=>{
+let html="<tr><th>Passenger</th></tr>";
+data.forEach(row=>{
+html+=`<tr><td>${row.name}</td></tr>`;
+});
+document.getElementById("table").innerHTML=html;
+});
+}
+
+</script>
+
+</body>
+</html>
